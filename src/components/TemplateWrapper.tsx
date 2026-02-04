@@ -9,8 +9,6 @@ import Footer from './Footer';
 import CustomSectionComponent from './CustomSection';
 import ContactInfo from './ContactInfo';
 import { useContentDensity } from '../hooks/useContentDensity';
-import { useSidebarDisplayOptions } from '../hooks/useSidebarDisplayOptions';
-import SidebarDisplayMenu from './SidebarDisplayMenu';
 
 interface TemplateProps {
   resumeData: ResumeData;
@@ -41,7 +39,7 @@ function usePhotoSizeClasses(size?: PhotoSize, variant: 'default' | 'accent' = '
   if (variant === 'accent') {
     switch (size) {
       case 'small': return 'w-16 h-16';
-      case 'large': return 'w-32 h-32';
+      case 'large': return 'w-36 h-36';
       case 'medium':
       default:
         return 'w-24 h-24';
@@ -49,7 +47,7 @@ function usePhotoSizeClasses(size?: PhotoSize, variant: 'default' | 'accent' = '
   }
   switch (size) {
     case 'small': return 'w-20 h-20';
-    case 'large': return 'w-40 h-40';
+    case 'large': return 'w-44 h-44';
     case 'medium':
     default:
       return 'w-32 h-32';
@@ -334,7 +332,6 @@ const SkillsSidebarTemplate: React.FC<TemplateProps> = ({
     otherColumnRef: mainRef,
   });
 
-  const { options, setLayout, setStyle } = useSidebarDisplayOptions();
 
   const renderSection = (sectionId: string, placement: 'main' | 'sidebar') => {
     const actualPlacement = sectionPlacement[sectionId] || 'main';
@@ -345,6 +342,8 @@ const SkillsSidebarTemplate: React.FC<TemplateProps> = ({
       if (!profileText) return null;
       const isSidebar = placement === 'sidebar';
       const densitySettings = isSidebar ? sidebarDensity : { spacingMultiplier: 1, fontSizeMultiplier: 1 };
+      const titleColor = isSidebar ? 'white' : colors.primary;
+      const profileTextClass = isSidebar ? 'text-xs text-white leading-relaxed' : 'text-sm text-gray-700 leading-relaxed';
       return (
         <section key={sectionId} className="mb-6 section-block">
           <h3
@@ -354,7 +353,7 @@ const SkillsSidebarTemplate: React.FC<TemplateProps> = ({
                 : 'text-lg font-semibold mb-3 uppercase tracking-wide border-b pb-1'
             }
             style={{
-              color: colors.primary,
+              color: titleColor,
               ...(placement === 'main' ? { borderColor: colors.accent } : {}),
               ...(isSidebar
                 ? {
@@ -367,7 +366,7 @@ const SkillsSidebarTemplate: React.FC<TemplateProps> = ({
             Profile
           </h3>
           <p
-            className={placement === 'sidebar' ? 'text-xs text-gray-700 leading-relaxed' : 'text-sm text-gray-700 leading-relaxed'}
+            className={profileTextClass}
             style={
               isSidebar
                 ? {
@@ -391,6 +390,7 @@ const SkillsSidebarTemplate: React.FC<TemplateProps> = ({
           compact={placement === 'sidebar'}
           spacingMultiplier={placement === 'sidebar' ? sidebarDensity.spacingMultiplier : 1}
           fontSizeMultiplier={placement === 'sidebar' ? sidebarDensity.fontSizeMultiplier : 1}
+          light={placement === 'sidebar'}
         />
       );
     }
@@ -403,6 +403,7 @@ const SkillsSidebarTemplate: React.FC<TemplateProps> = ({
           compact={placement === 'sidebar'}
           spacingMultiplier={placement === 'sidebar' ? sidebarDensity.spacingMultiplier : 1}
           fontSizeMultiplier={placement === 'sidebar' ? sidebarDensity.fontSizeMultiplier : 1}
+          light={placement === 'sidebar'}
         />
       );
     }
@@ -415,11 +416,19 @@ const SkillsSidebarTemplate: React.FC<TemplateProps> = ({
           compact={placement === 'sidebar'}
           spacingMultiplier={placement === 'sidebar' ? sidebarDensity.spacingMultiplier : 1}
           fontSizeMultiplier={placement === 'sidebar' ? sidebarDensity.fontSizeMultiplier : 1}
+          light={placement === 'sidebar'}
         />
       );
     }
     if (sectionId === 'contact') {
-      return <ContactInfo key={sectionId} {...resumeData.header} colorScheme={colorScheme} />;
+      return (
+        <ContactInfo
+          key={sectionId}
+          {...resumeData.header}
+          colorScheme={colorScheme}
+          light={placement === 'sidebar'}
+        />
+      );
     }
     if (sectionId.startsWith('custom-')) {
       const customSection = resumeData.customSections?.find(s => `custom-${s.id}` === sectionId);
@@ -432,6 +441,7 @@ const SkillsSidebarTemplate: React.FC<TemplateProps> = ({
             compact={placement === 'sidebar'}
             spacingMultiplier={placement === 'sidebar' ? sidebarDensity.spacingMultiplier : 1}
             fontSizeMultiplier={placement === 'sidebar' ? sidebarDensity.fontSizeMultiplier : 1}
+            light={placement === 'sidebar'}
           />
         );
       }
@@ -451,25 +461,14 @@ const SkillsSidebarTemplate: React.FC<TemplateProps> = ({
         {/* Sidebar */}
         <div
           ref={sidebarRef}
-          className="w-full md:w-1/3 print:w-1/3 p-6 sidebar"
+          className="w-full md:w-2/5 print:w-2/5 p-6 sidebar flex flex-col"
           data-sidebar
-          data-sidebar-layout={options.layout}
-          data-sidebar-style={options.style}
-          style={{ backgroundColor: withAlpha(colors.accent, 0.15) }}
+          data-sidebar-layout="relaxed"
+          data-sidebar-style="bulleted"
+          style={{ backgroundColor: colors.secondary }}
         >
-          {/* Display options menu */}
-          <div className="mb-4 flex justify-end">
-            <SidebarDisplayMenu
-              layout={options.layout}
-              style={options.style}
-              onLayoutChange={setLayout}
-              onStyleChange={setStyle}
-              iconColor={colors.primary}
-            />
-          </div>
-
           {resumeData.header.photo && photoPosition !== 'right-corner' && (
-            <div className="mb-6 flex justify-start">
+            <div className="mb-6 flex justify-center">
               <img
                 src={resumeData.header.photo}
                 alt={resumeData.header.name}
@@ -478,10 +477,13 @@ const SkillsSidebarTemplate: React.FC<TemplateProps> = ({
             </div>
           )}
           {sectionOrder.map(sectionId => renderSection(sectionId, 'sidebar'))}
+          <div className="mt-auto pt-4 text-xs text-white/80">
+            Generated with Resumake • {new Date().getFullYear()}
+          </div>
         </div>
 
         {/* Main Content */}
-        <div ref={mainRef} className="w-full md:w-2/3 print:w-2/3 p-8 relative" data-area="main">
+        <div ref={mainRef} className="w-full md:w-3/5 print:w-3/5 p-8 relative" data-area="main">
           {resumeData.header.photo && photoPosition === 'right-corner' && (
             <img
               src={resumeData.header.photo}
@@ -498,7 +500,6 @@ const SkillsSidebarTemplate: React.FC<TemplateProps> = ({
             </h2>
           </div>
           {sectionOrder.map(sectionId => renderSection(sectionId, 'main'))}
-          <Footer />
         </div>
       </div>
     </div>
@@ -527,7 +528,6 @@ const ModernSplitTemplate: React.FC<TemplateProps> = ({
     otherColumnRef: mainRef,
   });
 
-  const { options, setLayout, setStyle } = useSidebarDisplayOptions();
 
   const renderSection = (sectionId: string, placement: 'main' | 'sidebar') => {
     const actualPlacement = sectionPlacement[sectionId] || 'main';
@@ -548,7 +548,7 @@ const ModernSplitTemplate: React.FC<TemplateProps> = ({
                 : 'text-lg font-semibold mb-3 uppercase tracking-wide border-b pb-1'
             }
             style={{
-              color: colors.primary,
+              color: titleColor,
               ...(placement === 'main' ? { borderColor: colors.accent } : {}),
               ...(isSidebar
                 ? {
@@ -561,7 +561,7 @@ const ModernSplitTemplate: React.FC<TemplateProps> = ({
             Profile
           </h3>
           <p
-            className={placement === 'sidebar' ? 'text-xs text-gray-700 leading-relaxed' : 'text-sm text-gray-700 leading-relaxed'}
+            className={profileTextClass}
             style={
               isSidebar
                 ? {
@@ -585,6 +585,7 @@ const ModernSplitTemplate: React.FC<TemplateProps> = ({
           compact={placement === 'sidebar'}
           spacingMultiplier={placement === 'sidebar' ? sidebarDensity.spacingMultiplier : 1}
           fontSizeMultiplier={placement === 'sidebar' ? sidebarDensity.fontSizeMultiplier : 1}
+          light={placement === 'sidebar'}
         />
       );
     }
@@ -597,6 +598,7 @@ const ModernSplitTemplate: React.FC<TemplateProps> = ({
           compact={placement === 'sidebar'}
           spacingMultiplier={placement === 'sidebar' ? sidebarDensity.spacingMultiplier : 1}
           fontSizeMultiplier={placement === 'sidebar' ? sidebarDensity.fontSizeMultiplier : 1}
+          light={placement === 'sidebar'}
         />
       );
     }
@@ -609,6 +611,7 @@ const ModernSplitTemplate: React.FC<TemplateProps> = ({
           compact={placement === 'sidebar'}
           spacingMultiplier={placement === 'sidebar' ? sidebarDensity.spacingMultiplier : 1}
           fontSizeMultiplier={placement === 'sidebar' ? sidebarDensity.fontSizeMultiplier : 1}
+          light={placement === 'sidebar'}
         />
       );
     }
@@ -626,6 +629,7 @@ const ModernSplitTemplate: React.FC<TemplateProps> = ({
             compact={placement === 'sidebar'}
             spacingMultiplier={placement === 'sidebar' ? sidebarDensity.spacingMultiplier : 1}
             fontSizeMultiplier={placement === 'sidebar' ? sidebarDensity.fontSizeMultiplier : 1}
+            light={placement === 'sidebar'}
           />
         );
       }
@@ -678,21 +682,10 @@ const ModernSplitTemplate: React.FC<TemplateProps> = ({
           ref={sidebarRef} 
           className="w-full md:w-1/3 print:w-1/3 p-6 sidebar" 
           data-sidebar 
-          data-sidebar-layout={options.layout}
-          data-sidebar-style={options.style}
-          style={{ backgroundColor: withAlpha(colors.accent, 0.15) }}
+          data-sidebar-layout="relaxed"
+          data-sidebar-style="bulleted"
+          style={{ backgroundColor: colors.primary }}
         >
-          {/* Display options menu */}
-          <div className="mb-4 flex justify-end">
-            <SidebarDisplayMenu
-              layout={options.layout}
-              style={options.style}
-              onLayoutChange={setLayout}
-              onStyleChange={setStyle}
-              iconColor={colors.primary}
-            />
-          </div>
-
           {sectionOrder.map(sectionId => renderSection(sectionId, 'sidebar'))}
         </div>
 
@@ -728,7 +721,6 @@ const AccentSidebarTemplate: React.FC<TemplateProps> = ({
     otherColumnRef: mainRef,
   });
 
-  const { options, setLayout, setStyle } = useSidebarDisplayOptions();
 
   const renderSection = (sectionId: string, placement: 'main' | 'sidebar') => {
     const actualPlacement = sectionPlacement[sectionId] || 'main';
@@ -856,21 +848,10 @@ const AccentSidebarTemplate: React.FC<TemplateProps> = ({
           ref={sidebarRef} 
           className="w-full md:w-1/5 print:w-1/5 p-4 sidebar" 
           data-sidebar 
-          data-sidebar-layout={options.layout}
-          data-sidebar-style={options.style}
+          data-sidebar-layout="relaxed"
+          data-sidebar-style="bulleted"
           style={{ backgroundColor: colors.primary }}
         >
-          {/* Display options menu */}
-          <div className="mb-4 flex justify-end">
-            <SidebarDisplayMenu
-              layout={options.layout}
-              style={options.style}
-              onLayoutChange={setLayout}
-              onStyleChange={setStyle}
-              iconColor="white"
-            />
-          </div>
-
           {resumeData.header.photo && photoPosition !== 'right-corner' && (
             <div className="mb-6 flex justify-start">
               <img

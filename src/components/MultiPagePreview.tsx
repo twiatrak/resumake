@@ -171,6 +171,7 @@ const MultiPagePreview: React.FC<MultiPagePreviewProps> = ({ children }) => {
   const hiddenHostRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const resumeRootRef = useRef<HTMLElement | null>(null);
+  const previewRef = useRef<HTMLDivElement>(null);
   const [fontsReady, setFontsReady] = useState(false);
 
   useEffect(() => {
@@ -210,7 +211,15 @@ const MultiPagePreview: React.FC<MultiPagePreviewProps> = ({ children }) => {
       document.documentElement,
       contentRef.current,
     ];
-    const observer = new MutationObserver(() => {
+    const observer = new MutationObserver((mutations) => {
+      const previewEl = previewRef.current;
+      if (previewEl && mutations.length > 0) {
+        const allInPreview = mutations.every(m => {
+          const target = m.target as Node;
+          return previewEl.contains(target);
+        });
+        if (allInPreview) return;
+      }
       requestAnimationFrame(layout);
     });
     for (const t of targets) {
@@ -229,6 +238,37 @@ const MultiPagePreview: React.FC<MultiPagePreviewProps> = ({ children }) => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [children, fontsReady]);
+
+  useEffect(() => {
+    const previewEl = previewRef.current;
+    if (!previewEl) return;
+
+    const onToggle = (event: Event) => {
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+      const label = target.closest('[data-skill-toggle]') as HTMLElement | null;
+      if (!label) return;
+      const container = label.closest('.skills-toggle') as HTMLElement | null;
+      if (!container) return;
+      const key = container.getAttribute('data-skill-key');
+      if (!key) return;
+
+      container.classList.toggle('skills-toggle--compact');
+      const sourceRoot = contentRef.current;
+      if (sourceRoot) {
+        const sourceMatch = sourceRoot.querySelector(`.skills-toggle[data-skill-key="${key}"]`) as HTMLElement | null;
+        if (sourceMatch) {
+          sourceMatch.classList.toggle('skills-toggle--compact');
+        }
+      }
+      event.preventDefault();
+    };
+
+    previewEl.addEventListener('click', onToggle);
+    return () => {
+      previewEl.removeEventListener('click', onToggle);
+    };
+  }, [pages]);
 
   function computeAvailableHeightPx(source: HTMLElement): number {
     if (!hiddenHostRef.current) return 0;
@@ -501,7 +541,7 @@ const MultiPagePreview: React.FC<MultiPagePreviewProps> = ({ children }) => {
       </div>
 
       {/* Visible multi-page preview */}
-      <div className="flex flex-col items-center gap-6">
+      <div ref={previewRef} className="flex flex-col items-center gap-6">
         {pages.map((page) => {
           const isTwoCol = page.isTwoColumn;
           // Remove frame when a sidebar is present

@@ -3,11 +3,11 @@
     "name": "Tymoteusz Wiatrak",
     "title": "Software Engineer | Research-Driven Developer",
     "email": "wiatraktymoteusz@gmail.com",
-    "phone": "+33 6 29 80 65 37",
-    "location": "Madrid, Spain (Erasmus) / Nice, France",
+    "phone": "+48 739 970 229",
+    "location": "Warsaw, Poland",
     "github": "github.com/twiatrak"
   },
-  "profile": "Informatics student at Université Côte d'Azur (Ranked 5th in cohort) currently completing an Erasmus exchange at Universidad Complutense de Madrid. Passionate about high-performance algorithms, system robustness, and automation. Experienced in building enterprise data-sync tools and research-grade ML scaffolds.",
+  "profile": "Informatics student at Université Côte d'Azur (BSc finishing summer 2026); Erasmus at Universidad Complutense de Madrid. Focused on high-performance algorithms, robust systems, and automation, with interests in ML reliability and tooling. Built enterprise data-sync workflows and research-grade ML scaffolds.",
   "education": [
     {
       "institution": "Universidad Complutense de Madrid",
@@ -36,9 +36,10 @@
       "startDate": "Jun 2025",
       "endDate": "Aug 2025",
       "highlights": [
-        "Engineered a three-tier web service for high-volume data synchronization between DHL databases and client-side systems.",
-        "Automated file reconciliation workflows, significantly reducing manual error-handling for large-scale enterprise datasets.",
-        "Implemented custom error-reporting software to identify and resolve data discrepancies in real-time."
+        "Built a three-tier service syncing DHL datasets with client systems.",
+        "Automated file reconciliation to cut manual errors at scale.",
+        "Implemented real-time discrepancy reporting.",
+        "Improved data quality checks across high-volume batch jobs."
       ]
     },
     {
@@ -48,14 +49,15 @@
       "startDate": "Sep 2024",
       "endDate": "May 2025",
       "highlights": [
-        "Instructed bachelor students in Mathematics and Informatics, translating complex algorithmic concepts into accessible lessons.",
-        "Managed academic projects and organized curriculum milestones for a diverse group of peers."
+        "Taught bachelor cohorts in Mathematics and Informatics.",
+        "Coordinated projects and curriculum milestones.",
+        "Prepared exercises on algorithms and data structures."
       ]
     }
   ],
   "skills": {
     "technical": [
-      "Java", "Python", "C# (.NET)", "C/C++", "TypeScript", "SQL", "R", "PyTorch", "React"
+      "Java", "Python", "C# (.NET)", "C/C++", "TypeScript", "SQL", "R", "PyTorch", "TensorFlow", "scikit-learn", "React"
     ],
     "tools": [
       "Git", "Linux", "Gradle", "PostgreSQL", "Vite"
@@ -68,12 +70,34 @@
     {
       "id": "research_projects",
       "title": "Robustness & Algorithmic Projects",
-      "content": "<ul><li><b>HetGNN & Self-Healing Framework:</b> Developed a PyTorch-based system to maintain GNN stability under structural 'shocks' using dual-ascent optimization.</li><li><b>RandLin Matrix Diagnostics:</b> Built a matrix-free library to validate the reliability (calibration) of randomized linear algebra estimators.</li><li><b>DetGraph Change Detection:</b> Created a CLI for detecting structural shifts in graphs using spectral statistics.</li></ul>"
+      "content": "<ul><li><b>HetGNN & Self-Healing:</b> PyTorch system to preserve GNN stability under structural shocks, using dual-ascent optimization with recovery metrics, ablation tracking, and stress-test suites.</li><li><b>RandLin Diagnostics:</b> Matrix-free checks for randomized linear algebra estimators, producing calibration and variance reports.</li><li><b>DetGraph:</b> CLI for detecting structural shifts in graphs, monitoring drift over time with spectral statistics.</li></ul>"
     },
     {
       "id": "software_projects",
       "title": "Systems & Tools",
-      "content": "<ul><li><b>Cividussi Resume Generator:</b> A print-optimized TypeScript/React app featuring real-time A4 overflow detection and AI tailoring.</li><li><b>Timonipumba Game Engine:</b> A 2D engine built in Java using ECS architecture to decouple game data from logic.</li></ul>"
+      "content": "<ul><li><b>Resumake:</b> Print-optimized TypeScript/React resume builder with A4 overflow detection and sharing.</li><li><b>Riddle Game:</b> 2D Java game built with an ECS-style architecture and tooling.</li></ul>"
+    },
+    {
+      "id": "certificates",
+      "title": "Certificates & Honors",
+      "content": "<ul><li><b>HTE geNIUS Program:</b> Italian Institute of Technology (Strategy & Bio-Tech Research).</li><li><b>HackerRank:</b> Java & Problem Solving Certificates.</li><li><b>Community AI ML Course (2021)</b>.</li></ul>"
     }
-  ]
+  ],
+  "customization": {
+    "sectionOrder": [
+      "profile",
+      "experience",
+      "education",
+      "skills",
+      "contact",
+      "custom-certificates",
+      "custom-research_projects",
+      "custom-software_projects"
+    ],
+    "sectionPlacement": {
+      "custom-certificates": "sidebar",
+      "custom-research_projects": "main",
+      "custom-software_projects": "main"
+    }
+  }
 }

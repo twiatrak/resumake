@@ -23,7 +23,7 @@ const Education: React.FC<EducationProps> = ({
 
   if (compact) {
     const textColorClass = light ? 'text-white' : 'text-gray-700';
-    const secondaryTextColorClass = light ? 'text-white' : 'text-gray-600';
+    const secondaryTextColorClass = light ? 'text-white/90' : 'text-gray-600';
     const titleColor = light ? 'white' : colors.primary;
     
     return (
@@ -36,32 +36,55 @@ const Education: React.FC<EducationProps> = ({
           style={{ 
             color: titleColor,
             marginBottom: `calc(0.6rem * ${spacingMultiplier})`,
-            fontSize: `calc(0.875rem * ${fontSizeMultiplier})`,
+            fontSize: `calc(0.95rem * ${fontSizeMultiplier})`,
           }}
         >
           Education
         </h3>
-        <div className="space-y-3" style={{ gap: `${0.9 * spacingMultiplier}em` }}>
+        <div className="space-y-2" style={{ gap: `${0.4 * spacingMultiplier}em` }}>
           {education.map((edu, index) => (
             <div key={index}>
               <div className="flex justify-between items-baseline" style={{ marginBottom: `calc(0.25rem * ${spacingMultiplier})` }}>
-                <h4 
+                <h4
                   className={`font-semibold text-xs ${textColorClass}`}
-                  style={{ fontSize: `calc(0.78rem * ${fontSizeMultiplier})`, color: titleColor }}
+                  style={{ fontSize: `calc(0.82rem * ${fontSizeMultiplier})`, color: titleColor }}
                 >
                   {edu.institution}
                 </h4>
-                <div className={`text-[0.68rem] ${secondaryTextColorClass}`}>{edu.startDate} - {edu.endDate}</div>
+                <div
+                  className={`text-[0.65rem] ${secondaryTextColorClass}`}
+                  style={{ fontSize: `calc(0.66rem * ${fontSizeMultiplier})` }}
+                >
+                  {edu.startDate} - {edu.endDate}
+                </div>
               </div>
-              <div className={`text-xs ${textColorClass}`} style={{ fontSize: `calc(0.74rem * ${fontSizeMultiplier})` }}>
+              <div
+                className={`text-[0.72rem] ${secondaryTextColorClass}`}
+                style={{ fontSize: `calc(0.74rem * ${fontSizeMultiplier})` }}
+              >
                 {edu.degree} in {edu.field}
               </div>
               {edu.description && (
-                <ul className={`list-disc list-inside text-xs ${textColorClass}`} style={{ fontSize: `calc(0.72rem * ${fontSizeMultiplier})`, lineHeight: `calc(1.5 * ${spacingMultiplier})` }}>
-                  {edu.description.split(/\n+|;\s+|·\s+|•\s+/).filter(Boolean).map((t, i) => (
-                    <li key={i} style={{ marginBlock: `calc(0.25rem * ${spacingMultiplier})` }}>{t.trim()}</li>
-                  ))}
-                </ul>
+                <div
+                  className={`text-[0.68rem] ${textColorClass} sidebar-education-description`}
+                  style={{
+                    fontSize: `calc(0.68rem * ${fontSizeMultiplier})`,
+                    lineHeight: `calc(1.28 * ${spacingMultiplier})`,
+                    marginTop: `calc(0.05rem * ${spacingMultiplier})`,
+                    marginLeft: 0,
+                    paddingLeft: 0,
+                    textIndent: 0,
+                    maxWidth: '100%',
+                  }}
+                >
+                  {edu.description
+                    .replace(/[•·]/g, ' ')
+                    .split(/\n+|;\s+/)
+                    .map(t => t.trim().replace(/^[-]+\s*/, ''))
+                    .filter(Boolean)
+                    .join(' ')
+                    .replace(/\s{2,}/g, ' ')}
+                </div>
               )}
             </div>
           ))}

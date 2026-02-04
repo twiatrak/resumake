@@ -104,6 +104,104 @@
   line-height: var(--sidebar-line-height);
 }
 
+/* Sidebar list: explicit listed vs compact (toggle) */
+[data-sidebar] section:not([data-sidebar-exempt]) .sidebar-list.sidebar-list--listed {
+  display: block !important;
+  list-style: disc !important;
+  padding-left: 1.1rem !important;
+  margin-top: var(--sidebar-spacing);
+  line-height: var(--sidebar-line-height);
+}
+[data-sidebar] section:not([data-sidebar-exempt]) .sidebar-list.sidebar-list--listed li {
+  display: list-item !important;
+  margin-bottom: var(--sidebar-item-gap);
+  line-height: inherit;
+}
+
+[data-sidebar] section:not([data-sidebar-exempt]) .sidebar-list.sidebar-list--compact {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.3rem;
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-top: calc(var(--sidebar-spacing) * 0.45);
+  line-height: var(--sidebar-line-height);
+}
+[data-sidebar] section:not([data-sidebar-exempt]) .sidebar-list.sidebar-list--compact li {
+  display: inline !important;
+  line-height: inherit;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+[data-sidebar] section:not([data-sidebar-exempt]) .sidebar-list.sidebar-list--compact li + li::before {
+  content: "•" !important;
+  margin: 0 0.2rem 0 0.08rem;
+  opacity: 0.85;
+  speak: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Skills sidebar toggles (JS delegated in preview) */
+.skills-toggle__label {
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  margin-bottom: 0.1rem;
+}
+
+/* Base: listed */
+[data-sidebar] .skills-toggle__list {
+  display: block;
+  list-style: disc;
+  padding-left: 1.1rem;
+  margin-top: var(--sidebar-spacing);
+  line-height: var(--sidebar-line-height);
+}
+[data-sidebar] .skills-toggle__list li {
+  display: list-item;
+  margin-bottom: var(--sidebar-item-gap);
+  line-height: inherit;
+}
+
+/* Compact when toggled */
+[data-sidebar] .skills-toggle.skills-toggle--compact .skills-toggle__list {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.3rem;
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-top: calc(var(--sidebar-spacing) * 0.45);
+  line-height: var(--sidebar-line-height);
+}
+[data-sidebar] .skills-toggle.skills-toggle--compact .skills-toggle__list li {
+  display: inline !important;
+  line-height: inherit;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+[data-sidebar] .skills-toggle.skills-toggle--compact .skills-toggle__list li + li::before {
+  content: "•" !important;
+  margin: 0 0.2rem 0 0.08rem;
+  opacity: 0.85;
+  speak: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Sidebar education description: no bullets or indentation */
+.sidebar-education-description,
+.sidebar-education-description ul,
+.sidebar-education-description ol {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+.sidebar-education-description li {
+  list-style: none;
+  margin-left: 0;
+}
+
 /* Global */
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -347,21 +445,6 @@ html.paged-root-scale {
     margin-block: calc(4px * var(--inside-spacing-scale, 1) * var(--area-spacing-mult, 1)) !important;
   }
 
-  /* Print-only brand badge for sidebars */
-  #resume .sidebar,
-  #resume [data-sidebar] { position: relative !important; }
-  #resume .sidebar::after,
-  #resume [data-sidebar]::after {
-    content: "Powered by Cividussi";
-    position: absolute;
-    left: 6mm;
-    bottom: 8mm;
-    font-size: 9px;
-    color: rgba(0, 0, 0, 0.55);
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-  }
-
   /* Reclaim vertical space in print by reducing padding */
   #resume [data-area="main"],
   #resume [data-sidebar],
@@ -369,6 +452,7 @@ html.paged-root-scale {
     padding-top: 18px !important;
     padding-bottom: 10px !important;
   }
+
 
   #resume footer {
     margin-top: 6px !important;

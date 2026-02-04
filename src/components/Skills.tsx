@@ -22,7 +22,7 @@ const Skills: React.FC<SkillsProps> = ({
 }) => {
   const colors = COLOR_SCHEMES[colorScheme as keyof typeof COLOR_SCHEMES];
 
-  const dynamicSpacing = `${spacingMultiplier}em`;
+  const dynamicSpacing = `${0.5 * spacingMultiplier}em`;
   const dynamicFontSize = fontSizeMultiplier;
 
   if (compact) {
@@ -48,47 +48,56 @@ const Skills: React.FC<SkillsProps> = ({
           Skills
         </h3>
         <div 
-          className="space-y-2"
+          className="space-y-1"
           style={{ gap: dynamicSpacing }}
         >
           {skills.technical && skills.technical.length > 0 && (
-            <div>
-              <span 
-                className={`font-semibold text-xs ${labelColorClass}`}
+            <div className="skills-toggle skills-toggle--compact" data-skill-key="technical">
+              <button
+                type="button"
+                className={`font-semibold text-xs ${labelColorClass} skills-toggle__label`}
                 style={{ fontSize: `calc(0.75rem * ${dynamicFontSize})` }}
+                data-skill-toggle
               >
                 Technical
-              </span>
+              </button>
               <SidebarList 
                 items={skills.technical}
+                className="skills-toggle__list"
                 itemClassName={`text-xs ${textColorClass}`}
               />
             </div>
           )}
           {skills.languages && skills.languages.length > 0 && (
-            <div>
-              <span 
-                className={`font-semibold text-xs ${labelColorClass}`}
+            <div className="skills-toggle skills-toggle--compact" data-skill-key="languages">
+              <button
+                type="button"
+                className={`font-semibold text-xs ${labelColorClass} skills-toggle__label`}
                 style={{ fontSize: `calc(0.75rem * ${dynamicFontSize})` }}
+                data-skill-toggle
               >
                 Languages
-              </span>
+              </button>
               <SidebarList 
                 items={skills.languages}
+                className="skills-toggle__list"
                 itemClassName={`text-xs ${textColorClass}`}
               />
             </div>
           )}
           {skills.tools && skills.tools.length > 0 && (
-            <div>
-              <span 
-                className={`font-semibold text-xs ${labelColorClass}`}
+            <div className="skills-toggle skills-toggle--compact" data-skill-key="tools">
+              <button
+                type="button"
+                className={`font-semibold text-xs ${labelColorClass} skills-toggle__label`}
                 style={{ fontSize: `calc(0.75rem * ${dynamicFontSize})` }}
+                data-skill-toggle
               >
                 Tools
-              </span>
+              </button>
               <SidebarList 
                 items={skills.tools}
+                className="skills-toggle__list"
                 itemClassName={`text-xs ${textColorClass}`}
               />
             </div>
