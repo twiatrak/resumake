@@ -1,31 +1,31 @@
 {
   "header": {
     "name": "Tymoteusz Wiatrak",
-    "title": "Software Engineer | Research-Driven Developer",
+    "title": "Software Engineer | Research-Oriented Developer",
     "email": "wiatraktymoteusz@gmail.com",
     "phone": "+48 739 970 229",
     "location": "Warsaw, Poland",
     "github": "github.com/twiatrak"
   },
-  "profile": "Informatics student at Université Côte d'Azur (BSc finishing summer 2026); Erasmus at Universidad Complutense de Madrid. Focused on high-performance algorithms, robust systems, and automation, with interests in ML reliability and tooling. Built enterprise data-sync workflows and research-grade ML scaffolds.",
+  "profile": "Computer science student at Université Côte d’Azur (B.Sc. expected in summer 2026); Erasmus exchange at Universidad Complutense de Madrid. Focused on high-performance algorithms, robust systems, and automation, with a strong interest in machine learning reliability and related tooling. Designed enterprise data synchronization workflows and research-level ML foundations.",
   "education": [
     {
       "institution": "Universidad Complutense de Madrid",
       "degree": "Erasmus+ Exchange Program",
-      "field": "Informatics / Computer Science",
+      "field": "Computer Science / Computing",
       "location": "Madrid, Spain",
       "startDate": "Jan 2026",
       "endDate": "Present",
-      "description": "Active participant in the Facultad de Informática, focusing on advanced computing and international collaboration."
+      "description": "Active participant at the Facultad de Informática, with a focus on advanced computing and international collaboration."
     },
     {
       "institution": "Université Côte d'Azur",
-      "degree": "Bachelor in Informatics",
+      "degree": "B.Sc. in Computer Science",
       "field": "Computer Science",
       "location": "Nice, France",
       "startDate": "2023",
       "endDate": "2026 (Expected)",
-      "description": "Ranked 5th in the cohort (previous academic year). Core coursework in algorithms, data structures, and software architecture."
+      "description": "Ranked 5th in class (previous academic year). Core coursework in algorithms, data structures, and software architecture."
     }
   ],
   "experience": [
@@ -36,10 +36,10 @@
       "startDate": "Jun 2025",
       "endDate": "Aug 2025",
       "highlights": [
-        "Built a three-tier service syncing DHL datasets with client systems.",
-        "Automated file reconciliation to cut manual errors at scale.",
+        "Designed a three-layer service to synchronize DHL datasets with client systems.",
+        "Automated file reconciliation to reduce manual errors at scale.",
         "Implemented real-time discrepancy reporting.",
-        "Improved data quality checks across high-volume batch jobs."
+        "Improved data quality checks for high-volume batch processing."
       ]
     },
     {
@@ -49,15 +49,15 @@
       "startDate": "Sep 2024",
       "endDate": "May 2025",
       "highlights": [
-        "Taught bachelor cohorts in Mathematics and Informatics.",
-        "Coordinated projects and curriculum milestones.",
-        "Prepared exercises on algorithms and data structures."
+        "Mentored undergraduate cohorts in mathematics and computer science.",
+        "Coordinated projects and academic milestones.",
+        "Prepared exercises in algorithms and data structures."
       ]
     }
   ],
   "skills": {
     "technical": [
-      "Java", "Python", "C# (.NET)", "C/C++", "TypeScript", "SQL", "R", "PyTorch", "TensorFlow", "scikit-learn", "React"
+      "Java", "Python", "C# (.NET)", "C/C++", "MatLab", "SQL", "R", "PyTorch", "TensorFlow", "scikit-learn", "React","Javascript"
     ],
     "tools": [
       "Git", "Linux", "Gradle", "PostgreSQL", "Vite"
@@ -70,17 +70,17 @@
     {
       "id": "research_projects",
       "title": "Robustness & Algorithmic Projects",
-      "content": "<ul><li><b>HetGNN & Self-Healing:</b> PyTorch system to preserve GNN stability under structural shocks, using dual-ascent optimization with recovery metrics, ablation tracking, and stress-test suites.</li><li><b>RandLin Diagnostics:</b> Matrix-free checks for randomized linear algebra estimators, producing calibration and variance reports.</li><li><b>DetGraph:</b> CLI for detecting structural shifts in graphs, monitoring drift over time with spectral statistics.</li></ul>"
+      "content": "<ul><li><b>HetGNN & Self-Healing:</b> PyTorch system designed to preserve GNN stability under structural shocks, with dual-ascent optimization, recovery metrics, ablation tracking, and stress-test suites.</li><li><b>RandLin Diagnostics:</b> Matrix-free checks for randomized linear algebra estimators, producing calibration and variance reports.</li><li><b>DetGraph:</b> CLI for detecting structural changes in graphs, with temporal drift tracking via spectral statistics.</li></ul>"
     },
     {
       "id": "software_projects",
       "title": "Systems & Tools",
-      "content": "<ul><li><b>Resumake:</b> Print-optimized TypeScript/React resume builder with A4 overflow detection and sharing.</li><li><b>Riddle Game:</b> 2D Java game built with an ECS-style architecture and tooling.</li></ul>"
+      "content": "<ul><li><b>Resumake:</b> TypeScript/React resume generator optimized for printing, with A4 overflow detection and sharing.</li><li><b>Riddle Game:</b> 2D Java game built with an ECS-style architecture and supporting tooling.</li></ul>"
     },
     {
       "id": "certificates",
-      "title": "Certificates & Honors",
-      "content": "<ul><li><b>HTE geNIUS Program:</b> Italian Institute of Technology (Strategy & Bio-Tech Research).</li><li><b>HackerRank:</b> Java & Problem Solving Certificates.</li><li><b>Community AI ML Course (2021)</b>.</li></ul>"
+      "title": "Certificates & Distinctions",
+      "content": "<ul><li><b>HTE geNIUS Program:</b> Italian Institute of Technology (biotechnology strategy and research).</li><li><b>HackerRank:</b> Java and problem-solving certifications.</li><li><b>Community AI/ML Course (2021)</b>.</li></ul>"
     }
   ],
   "customization": {

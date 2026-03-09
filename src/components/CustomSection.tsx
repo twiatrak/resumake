@@ -72,7 +72,7 @@ const CustomSectionComponent: React.FC<CustomSectionProps> = ({
       >
         {section.title}
       </h3>
-      <div className="text-sm text-gray-700 leading-relaxed print:text-xs whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: safeContent }} />
+      <div className="text-sm text-gray-700 leading-relaxed print:text-sm whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: safeContent }} />
     </section>
   );
 };

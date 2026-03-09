@@ -427,6 +427,8 @@ const SkillsSidebarTemplate: React.FC<TemplateProps> = ({
           {...resumeData.header}
           colorScheme={colorScheme}
           light={placement === 'sidebar'}
+          spacingMultiplier={placement === 'sidebar' ? sidebarDensity.spacingMultiplier : 1}
+          fontSizeMultiplier={placement === 'sidebar' ? sidebarDensity.fontSizeMultiplier : 1}
         />
       );
     }
@@ -616,7 +618,16 @@ const ModernSplitTemplate: React.FC<TemplateProps> = ({
       );
     }
     if (sectionId === 'contact') {
-      return <ContactInfo key={sectionId} {...resumeData.header} colorScheme={colorScheme} light={placement === 'sidebar'} />;
+      return (
+        <ContactInfo
+          key={sectionId}
+          {...resumeData.header}
+          colorScheme={colorScheme}
+          light={placement === 'sidebar'}
+          spacingMultiplier={placement === 'sidebar' ? sidebarDensity.spacingMultiplier : 1}
+          fontSizeMultiplier={placement === 'sidebar' ? sidebarDensity.fontSizeMultiplier : 1}
+        />
+      );
     }
     if (sectionId.startsWith('custom-')) {
       const customSection = resumeData.customSections?.find(s => `custom-${s.id}` === sectionId);
@@ -809,7 +820,16 @@ const AccentSidebarTemplate: React.FC<TemplateProps> = ({
       );
     }
     if (sectionId === 'contact') {
-      return <ContactInfo key={sectionId} {...resumeData.header} colorScheme={colorScheme} light={placement === 'sidebar'} />;
+      return (
+        <ContactInfo
+          key={sectionId}
+          {...resumeData.header}
+          colorScheme={colorScheme}
+          light={placement === 'sidebar'}
+          spacingMultiplier={placement === 'sidebar' ? sidebarDensity.spacingMultiplier : 1}
+          fontSizeMultiplier={placement === 'sidebar' ? sidebarDensity.fontSizeMultiplier : 1}
+        />
+      );
     }
     if (sectionId.startsWith('custom-')) {
       const customSection = resumeData.customSections?.find(s => `custom-${s.id}` === sectionId);

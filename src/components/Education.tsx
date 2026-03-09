@@ -59,18 +59,18 @@ const Education: React.FC<EducationProps> = ({
                 </div>
               </div>
               <div
-                className={`text-[0.72rem] ${secondaryTextColorClass}`}
-                style={{ fontSize: `calc(0.74rem * ${fontSizeMultiplier})` }}
+                className={`text-[0.74rem] font-medium ${textColorClass}`}
+                style={{ fontSize: `calc(0.78rem * ${fontSizeMultiplier})` }}
               >
                 {edu.degree} in {edu.field}
               </div>
               {edu.description && (
                 <div
-                  className={`text-[0.68rem] ${textColorClass} sidebar-education-description`}
+                  className={`text-[0.72rem] ${secondaryTextColorClass} sidebar-education-description`}
                   style={{
-                    fontSize: `calc(0.68rem * ${fontSizeMultiplier})`,
-                    lineHeight: `calc(1.28 * ${spacingMultiplier})`,
-                    marginTop: `calc(0.05rem * ${spacingMultiplier})`,
+                    fontSize: `calc(0.74rem * ${fontSizeMultiplier})`,
+                    lineHeight: `calc(1.35 * ${spacingMultiplier})`,
+                    marginTop: `calc(0.12rem * ${spacingMultiplier})`,
                     marginLeft: 0,
                     paddingLeft: 0,
                     textIndent: 0,

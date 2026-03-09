@@ -10,6 +10,8 @@ interface ContactInfoProps {
   website?: string;
   colorScheme?: string;
   light?: boolean;
+  spacingMultiplier?: number;
+  fontSizeMultiplier?: number;
 }
 
 const ContactInfo: React.FC<ContactInfoProps> = ({
@@ -21,6 +23,8 @@ const ContactInfo: React.FC<ContactInfoProps> = ({
   website,
   colorScheme = 'blue',
   light = false,
+  spacingMultiplier = 1,
+  fontSizeMultiplier = 1,
 }) => {
   const colors = COLOR_SCHEMES[colorScheme as keyof typeof COLOR_SCHEMES];
   const textColor = light ? 'text-white' : 'text-gray-700';
@@ -82,11 +86,18 @@ const ContactInfo: React.FC<ContactInfoProps> = ({
     <section className="mb-6 print:mb-4" data-sidebar-exempt="true">
       <h3
         className={`text-sm font-semibold mb-3 uppercase tracking-wide print:text-xs print:mb-2 ${light ? 'text-white' : ''}`}
-        style={{ color: light ? 'white' : colors.primary }}
+        style={{
+          color: light ? 'white' : colors.primary,
+          marginBottom: `calc(0.75rem * ${spacingMultiplier})`,
+          fontSize: `calc(0.875rem * ${fontSizeMultiplier})`,
+        }}
       >
         Contact
       </h3>
-      <ul className={`sidebar-list text-xs print:text-[10px] ${textColor}`}>
+      <ul
+        className={`sidebar-list print:text-[10px] ${textColor}`}
+        style={{ fontSize: `calc(0.75rem * ${fontSizeMultiplier})` }}
+      >
         {contactItems.map((item, index) => (
           <li key={index} className="break-words">
             {item}

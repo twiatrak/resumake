@@ -354,6 +354,8 @@ html.paged-root-scale {
     color-adjust: exact;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    -webkit-user-select: text !important;
+    user-select: text !important;
   }
 
   .page-break-before {
@@ -364,6 +366,15 @@ html.paged-root-scale {
   #resume, #resume * {
     box-shadow: none !important;
     filter: none !important;
+    -webkit-user-select: text !important;
+    user-select: text !important;
+    text-shadow: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    mix-blend-mode: normal !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
   }
 
   #resume {
@@ -376,8 +387,13 @@ html.paged-root-scale {
     transform: none !important;
     overflow: visible !important;
     background: #fff !important;
+    background-image: none !important;
     --inside-spacing-scale: var(--spacing-scale);
     --section-gap-scale: var(--spacing-scale);
+  }
+
+  #resume.paged-preview {
+    background-image: none !important;
   }
 
   /* Remove outer frame at print time when sidebar exists */
@@ -463,5 +479,12 @@ html.paged-root-scale {
   #resume > :last-child {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
+  }
+
+  /* Remove extra bottom spacing on last section inside columns */
+  #resume [data-area="main"] .section-block:last-child,
+  #resume [data-sidebar] .section-block:last-child,
+  #resume .sidebar .section-block:last-child {
+    margin-bottom: 0 !important;
   }
 }
