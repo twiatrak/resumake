@@ -8,7 +8,7 @@ export interface SidebarDisplayOptions {
   style: ListStyle;
 }
 
-const STORAGE_KEY = 'cividussi-sidebar-display-options';
+const STORAGE_KEY = 'resumake-sidebar-display-options';
 
 const DEFAULT_OPTIONS: SidebarDisplayOptions = {
   layout: 'relaxed',

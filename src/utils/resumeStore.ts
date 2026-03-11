@@ -5,7 +5,7 @@
 import { ResumeData } from '../types/resume';
 import * as storage from './storage';
 
-const RESUME_OVERRIDE_KEY = 'cividussi-resume-override';
+const RESUME_OVERRIDE_KEY = 'resumake-resume-override';
 
 /**
  * Get resume override from localStorage

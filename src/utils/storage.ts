@@ -55,9 +55,9 @@ export function removeItem(key: string): boolean {
 /**
  * Export settings as a JSON file download
  * @param settings - settings object to export
- * @param filename - filename for the download (default: cividussi-settings-v1.json)
+ * @param filename - filename for the download (default: resumake-settings-v1.json)
  */
-export function exportSettings(settings: any, filename: string = 'cividussi-settings-v1.json'): void {
+export function exportSettings(settings: any, filename: string = 'resumake-settings-v1.json'): void {
   exportJsonFile(filename, settings);
 }
 

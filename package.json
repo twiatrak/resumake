@@ -1,5 +1,5 @@
 {
-  "name": "cividussi",
+  "name": "resumake",
   "version": "1.0.0",
   "type": "module",
   "description": "Modern résumé generator with React, TypeScript, and TailwindCSS",
@@ -7,7 +7,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/twiatrak/Cividussi.git"
+    "url": "https://github.com/twiatrak/resumake.git"
   },
   "scripts": {
     "dev": "vite",

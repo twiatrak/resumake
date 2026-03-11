@@ -6,9 +6,9 @@ import { PersistedSettings, isValidPersistedSettings, migrateSettings } from './
 import * as storage from './storage';
 
 // Storage keys
-export const PROFILES_KEY = 'cividussi:v1:profiles';
-export const ACTIVE_PROFILE_KEY = 'cividussi:v1:activeProfile';
-const LEGACY_SETTINGS_KEY = 'cividussi:v1:settings';
+export const PROFILES_KEY = 'resumake:v1:profiles';
+export const ACTIVE_PROFILE_KEY = 'resumake:v1:activeProfile';
+const LEGACY_SETTINGS_KEY = 'resumake:v1:settings';
 
 // Profile data structure
 export interface ProfileData {

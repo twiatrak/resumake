@@ -1,8 +1,9 @@
-# Cividussi
+# Resumake
 
 A modern résumé generator built with React, TypeScript, and TailwindCSS. Create beautiful, print-ready résumés from JSON data with real-time customization.
 
-![Résumé Preview](https://github.com/user-attachments/assets/46d82f57-c383-44f2-a55b-9340e2108e39)
+<!-- TODO: Add a résumé preview screenshot here -->
+<!-- ![Résumé Preview](screenshot.png) -->
 
 ## Features
 
@@ -21,8 +22,8 @@ A modern résumé generator built with React, TypeScript, and TailwindCSS. Creat
 
 ```bash
 # Clone and install
-git clone https://github.com/twiatrak/Cividussi.git
-cd Cividussi
+git clone https://github.com/twiatrak/resumake.git
+cd resumake
 npm install
 
 # Start dev server
